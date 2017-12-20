@@ -1,2 +1,2 @@
 # student_management
-maven and spring practice
+maven and spring practice.
