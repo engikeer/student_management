@@ -27,13 +27,13 @@ public class TestController {
     }
 
 
-    @RequestMapping(value = "/admin")
+    @RequestMapping(value = "/admin.do")
     @ResponseBody
     public String testSpring() {
         return "My testSpring";
     }
 
-    @RequestMapping(value = "/test", produces="application/json; charset=UTF-8")
+    @RequestMapping(value = "/test.do", produces="application/json; charset=UTF-8")
     @ResponseBody
     public String testDB(HttpServletRequest request, HttpServletResponse response) {
         String jsonData = "{'name':'安红','age':29}";
