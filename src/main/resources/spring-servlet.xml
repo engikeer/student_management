@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 扫描指定包带@Controller注解的类-->
-    <context:component-scan base-package="com.hand.home"></context:component-scan>
+    <context:component-scan base-package="com.hand.home"/>
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+
+    <!-- 配置字符集-->
+    <bean id="utf8Charset" class="java.nio.charset.Charset"
+          factory-method="forName">
+        <constructor-arg value="UTF-8"/>
+    </bean>
+
+    <!-- 解析消息中的非拉丁字母，防止变为??-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg ref="utf8Charset"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--&lt;!&ndash; Spring默认连接池 &ndash;&gt;-->
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--<property name="url" value="jdbc:sqlite:data/demo.db" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 定义JDBCTemplate类 &ndash;&gt;-->
+    <!--&lt;!&ndash; 为JDBC模板注入连接池属性 &ndash;&gt;-->
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >-->
+    <!--<property name="dataSource" ref="dataSource" />-->
+    <!--</bean>-->
+    <bean id="dbConnect" class="com.hand.utils.DBConnect"/>
+
 </beans>
