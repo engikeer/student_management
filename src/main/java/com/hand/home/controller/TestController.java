@@ -40,7 +40,7 @@ public class TestController {
         logger.error("error level");
         logger.fatal("fatal level");
 
-        return "My testSpring";
+        return "My Admin String";
     }
 
 
