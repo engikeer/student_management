@@ -32,11 +32,13 @@ public class StudentDaoImpl implements StudentDao {
 
     }
 
+    // TODO 干点啥
     @Override
     public boolean batchInsert(List<Object> obj) {
         return false;
     }
 
+    // FIXME 修一下
     @Override
     public boolean update(Object obj) {
         return false;
