@@ -5,7 +5,7 @@ $(document).ready(function(){
     option = null;
     app.title = '北京公交路线 - 线特效';
 
-    $.getJSON('statics/json/lines-bus.json', function(data) {
+    $.getJSON('static/json/lines-bus.json', function(data) {
         var hStep = 300 / (data.length - 1);
         var busLines = [].concat.apply([], data.map(function (busLine, idx) {
             var prevPt;
