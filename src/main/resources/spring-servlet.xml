@@ -30,16 +30,11 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!--&lt;!&ndash; Spring默认连接池 &ndash;&gt;-->
-    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-    <!--<property name="url" value="jdbc:sqlite:data/demo.db" />-->
-    <!--</bean>-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+    </bean>
 
-    <!--&lt;!&ndash; 定义JDBCTemplate类 &ndash;&gt;-->
-    <!--&lt;!&ndash; 为JDBC模板注入连接池属性 &ndash;&gt;-->
-    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >-->
-    <!--<property name="dataSource" ref="dataSource" />-->
-    <!--</bean>-->
-    <bean id="dbConnect" class="com.hand.utils.DBConnect"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
 
 </beans>
