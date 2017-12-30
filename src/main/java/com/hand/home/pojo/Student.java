@@ -1,7 +1,7 @@
 package com.hand.home.pojo;
 
 
-public class Student {
+public class Student implements Pojo{
     private String name;
     private int age;
 

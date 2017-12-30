@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class StudentDaoImpl implements StudentDao {
+public class StudentDaoImpl<T extends Student> implements StudentDao<T> {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -19,8 +19,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public boolean insert(Object obj) {
-            Student student = (Student) obj;
+    public boolean insert(Student student) {
             String sqlInsert = "INSERT INTO student (name, age) VALUES (?, ?)";
             jdbcTemplate.update(sqlInsert, student.getName(), student.getAge());
             return true;

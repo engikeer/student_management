@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hand.home.dao.StudentDao;
+import com.hand.home.pojo.Pojo;
 import com.hand.home.pojo.Student;
 
 import com.google.gson.Gson;
@@ -49,8 +50,21 @@ public class TestController {
     public String testDB(HttpServletRequest request, HttpServletResponse response) {
         String jsonData = "{'name':'安红','age':29}";
         Student student = gson.fromJson(jsonData, Student.class);
-        studentDao.insert(student);
+        boolean ifSuccess = studentDao.insert(student);
         return gson.toJson(student);
 
     }
+
+//    @RequestMapping(value = "/hello.do", produces="application/json; charset=UTF-8")
+//    @ResponseBody
+//    public String testDB(String args1 , String args2 , HttpServletRequest request, HttpServletResponse response) {
+//        return args1 + "/" + args2;
+//        ///WEB-INF/views/args1/args2.jsp
+//    }
+//    @RequestMapping(value = "/hello.do", produces="application/json; charset=UTF-8")
+//    @ResponseBody
+//    public String testDB(String args1 , HttpServletRequest request, HttpServletResponse response) {
+//        return args1 ;
+//        ///WEB-INF/views/args1.jsp
+//    }
 }
