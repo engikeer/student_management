@@ -3,7 +3,9 @@ package com.hand.home.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.hand.home.dao.BaseDao;
 import com.hand.home.dao.StudentDao;
+import com.hand.home.pojo.Manager;
 import com.hand.home.pojo.Pojo;
 import com.hand.home.pojo.Student;
 
@@ -21,11 +23,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class TestController {
-    private StudentDao studentDao;
+    private StudentDao<Student> studentDao;
     private Gson gson = new Gson();
 
     @Autowired
-    public TestController(StudentDao studentDao) {
+    public TestController(StudentDao<Student> studentDao) {
         this.studentDao = studentDao;
     }
 
@@ -50,9 +52,9 @@ public class TestController {
     public String testDB(HttpServletRequest request, HttpServletResponse response) {
         String jsonData = "{'name':'安红','age':29}";
         Student student = gson.fromJson(jsonData, Student.class);
-        boolean ifSuccess = studentDao.insert(student);
-        return gson.toJson(student);
-
+        studentDao.insert(student);
+//        return gson.toJson(student);
+        return "index.html";
     }
 
 //    @RequestMapping(value = "/hello.do", produces="application/json; charset=UTF-8")
