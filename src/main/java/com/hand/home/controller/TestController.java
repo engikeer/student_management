@@ -1,12 +1,6 @@
 package com.hand.home.controller;
 
-import java.util.List;
-import java.util.Map;
-
-import com.hand.home.dao.BaseDao;
 import com.hand.home.dao.StudentDao;
-import com.hand.home.pojo.Manager;
-import com.hand.home.pojo.Pojo;
 import com.hand.home.pojo.Student;
 
 import com.google.gson.Gson;
@@ -53,8 +47,7 @@ public class TestController {
         String jsonData = "{'name':'安红','age':29}";
         Student student = gson.fromJson(jsonData, Student.class);
         studentDao.insert(student);
-//        return gson.toJson(student);
-        return "index.html";
+        return gson.toJson(student);
     }
 
 //    @RequestMapping(value = "/hello.do", produces="application/json; charset=UTF-8")
