@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+
+
+    <!-- 给定命名空间的缓存配置 -->
+    <!--<cache></cache>-->
+
+    <!-- 其他命名空间缓存配置的引用 -->
+    <!--<cache-ref namespace=""></cache-ref>-->
+
+    <!-- 描述如何从数据库结果集中来加载对象，最复杂也是最强大的元素 -->
+    <!--<resultMap id="" type=""></resultMap>-->
+
+    <resultMap id="studentResult" type="Student">
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <!-- 可被其他语句引用的可重用语句块 -->
+    <!--<sql></sql>-->
+
+    <!-- 插入 -->
+    <!--<insert id=""></insert>-->
+
+    <!-- 更新 -->
+    <!--<update id=""></update>-->
+
+    <!-- 删除 -->
+    <!--<delete id=""></delete>-->
+
+    <!-- 查询 -->
+    <!--<select id=""></select>-->
+
+    <insert id="insert" parameterType="Student">
+        INSERT INTO student (name, age) VALUES (#{name}, #{age})
+    </insert>
+</mapper>
